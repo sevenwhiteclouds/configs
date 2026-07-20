@@ -9,7 +9,8 @@ if profile ~= "stock" then
 end
 
 if profile == "minimal" or profile == "full" then
-  require("lazyconf")
+  require("pack")
+  --require("lazyconf")
   require("telescopeconf")
 end
 
