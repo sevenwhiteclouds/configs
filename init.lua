@@ -1,6 +1,6 @@
 local profile = vim.env.NVIM_PROFILE or "stock"
 
-if profile ~= "stock" then
+if not (profile == "stock") then
   vim.g.mapleader = " "
 
   require("opts")
