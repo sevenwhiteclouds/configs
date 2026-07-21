@@ -30,7 +30,7 @@ elseif profile == "full" then
     "https://github.com/hrsh7th/nvim-cmp",
     {src = "https://github.com/L3MON4D3/LuaSnip", vim.version.range("v2.x")},
 
-    {src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master"}
+    "https://github.com/romus204/tree-sitter-manager.nvim"
   })
 
   require("telescopeconf")

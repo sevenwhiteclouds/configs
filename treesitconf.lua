@@ -1,9 +1,5 @@
--- TODO: update treesitter to the new incompatible rewrite
-require("nvim-treesitter.configs").setup({
-  highlight = {enable = true, additional_vim_regex_highlighting = false},
-
+require("tree-sitter-manager").setup({
   auto_install = true,
-
   ensure_installed = {
     "cpp",
     "java",
@@ -17,8 +13,16 @@ require("nvim-treesitter.configs").setup({
     "markdown",
     "lua",
     "vimdoc",
-    "sql",
-  }
+    "sql"
+  },
 })
 
-vim.keymap.set("n", "<leader>t", require("nvim-treesitter.install").update())
+-- pull up the manager
+vim.keymap.set("n", "<leader>t", function()
+  vim.cmd("TSManager")
+end)
+
+-- update all parsers
+vim.keymap.set("n", "<leader>u", function()
+  vim.cmd("TSUpdate!")
+end)
