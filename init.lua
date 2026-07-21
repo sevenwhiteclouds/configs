@@ -1,6 +1,6 @@
 local profile = vim.env.NVIM_PROFILE or "stock"
 
-if profile ~= "stock" then
+if not (profile == "stock") then
   vim.g.mapleader = " "
 
   require("opts")
@@ -8,14 +8,28 @@ if profile ~= "stock" then
   require("cmds")
 end
 
-if profile == "minimal" or profile == "full" then
-  require("lazyconf")
-  require("telescopeconf")
-end
+-- plenary.nvim is a telescope.nvim dependency
+if profile == "minimal" then
+  vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    {src = "https://github.com/nvim-telescope/telescope.nvim", vim.version.range("v0.2.1")}
+  })
 
-if profile == "full" then
+  require("telescopeconf")
+elseif profile == "full" then
+  vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    {src = "https://github.com/nvim-telescope/telescope.nvim", vim.version.range("v0.2.1")},
+
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/williamboman/mason.nvim",
+    "https://github.com/williamboman/mason-lspconfig.nvim",
+
+    "https://github.com/romus204/tree-sitter-manager.nvim"
+  })
+
+  require("telescopeconf")
   require("masonconf")
   require("lspconfig")
   require("treesitconf")
-  require("autocmp")
 end
