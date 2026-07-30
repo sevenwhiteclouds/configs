@@ -12,10 +12,12 @@ end
 if profile == "minimal" then
   vim.pack.add({
     "https://github.com/nvim-lua/plenary.nvim",
-    {src = "https://github.com/nvim-telescope/telescope.nvim", vim.version.range("v0.2.1")}
+    {src = "https://github.com/nvim-telescope/telescope.nvim", vim.version.range("v0.2.1")},
+    "https://github.com/romus204/tree-sitter-manager.nvim"
   })
 
   require("telescopeconf")
+  require("treesitconf")
 elseif profile == "full" then
   vim.pack.add({
     "https://github.com/nvim-lua/plenary.nvim",
